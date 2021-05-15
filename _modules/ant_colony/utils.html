@@ -169,13 +169,14 @@
 <span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance_matrix</span>
 
 <span class="c1">###</span>
-<div class="viewcode-block" id="plot_rout_map"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.plot_rout_map">[docs]</a><span class="k">def</span> <span class="nf">plot_rout_map</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">path_type</span><span class="o">=</span><span class="s1">&#39;ants&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_rout_map"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.plot_rout_map">[docs]</a><span class="k">def</span> <span class="nf">plot_rout_map</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">path_type</span><span class="o">=</span><span class="s1">&#39;ants&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;genera </span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        df (df): df con coordenadas de cada nodo. Debe incluir cols &#39;lat&#39; y &#39;lon&#39;.</span>
 <span class="sd">        route (lst): Ruta con identificador de los nodos a graficar en el mapa.</span>
-<span class="sd">        path_type (str, optional): Tipo de línea para la trayectoria. Opciones son &#39;plain&#39; y &#39;ants&#39;. Defaults es &#39;ants&#39;.</span>
+<span class="sd">        path_type (str, optional): Tipo de línea para la trayectoria. Opciones son &#39;plain&#39; y &#39;ants&#39;. Default es &#39;ants&#39;.</span>
+<span class="sd">        nodes (bool, optional): Indica si graficar los nodos. Default es True.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        [folium map]: Mapa con los nodos conectados por la ruta provista.</span>
@@ -200,13 +201,14 @@
     <span class="c1"># map</span>
     <span class="n">map_cities</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">zoom_start</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">mean_x</span><span class="p">,</span> <span class="n">mean_y</span><span class="p">])</span>
 
-    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_coord</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-        <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]],</span>
-        <span class="n">icon</span><span class="o">=</span><span class="n">plugins</span><span class="o">.</span><span class="n">BeautifyIcon</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span>
-                              <span class="n">border_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
-                              <span class="n">border_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                              <span class="n">text_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
-                              <span class="n">inner_icon_style</span><span class="o">=</span><span class="s1">&#39;margin-top:0px;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_cities</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_coord</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]],</span>
+            <span class="n">icon</span><span class="o">=</span><span class="n">plugins</span><span class="o">.</span><span class="n">BeautifyIcon</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span>
+                                <span class="n">border_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+                                <span class="n">border_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                <span class="n">text_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+                                <span class="n">inner_icon_style</span><span class="o">=</span><span class="s1">&#39;margin-top:0px;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_cities</span><span class="p">)</span>
     
     <span class="c1"># add route</span>
     <span class="k">if</span> <span class="n">path_type</span><span class="o">==</span><span class="s1">&#39;ants&#39;</span><span class="p">:</span>
