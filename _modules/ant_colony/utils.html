@@ -343,7 +343,7 @@
         <span class="n">data</span> <span class="o">=</span> <span class="n">tsplib95</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">get_graph</span><span class="p">()</span> </div>
 
-<div class="viewcode-block" id="read_coord_data"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.read_coord_data">[docs]</a><span class="k">def</span> <span class="nf">read_coord_data</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">n_cities</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
+<div class="viewcode-block" id="read_coord_data"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.read_coord_data">[docs]</a><span class="k">def</span> <span class="nf">read_coord_data</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">n_cities</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1999</span><span class="p">,</span> <span class="n">coord_df</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Basado en la solución propuesta en el siguiente repositorio: https://github.com/DiegoVicen/som-tsp</span>
 <span class="sd">    Convierte en grafo datos de matrices de coordenadas leídas desde un archivo .tsp.</span>
@@ -352,9 +352,10 @@
 <span class="sd">        path (str): Ruta del archivo.</span>
 <span class="sd">        n_cities (int): número de ciudades a samplear.</span>
 <span class="sd">        seed (int): seed para el sampleo.</span>
+<span class="sd">        coord_df (bool): Si se quiere retornar df con coordenadas.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        (graph networkx): Grafo asociado a la matriz de distancias. </span>
+<span class="sd">        (graph networkx or df): Grafo asociado a la matriz de distancias ó df con coordenadas. </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -388,6 +389,10 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Problem with </span><span class="si">{}</span><span class="s1"> cities. Selected </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dimension</span><span class="p">,</span> <span class="n">n_cities</span><span class="p">))</span>
     
     <span class="n">sample_df</span> <span class="o">=</span> <span class="n">cities_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_cities</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">coord_df</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sample_df</span>
+
     <span class="n">array_coord</span> <span class="o">=</span> <span class="n">sample_df</span><span class="p">[[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
     
     <span class="n">d_mat</span> <span class="o">=</span> <span class="n">distance_matrix</span><span class="p">(</span><span class="n">array_coord</span><span class="p">,</span> <span class="n">array_coord</span><span class="p">)</span>
