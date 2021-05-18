@@ -724,11 +724,15 @@ de forma deterministica con una semilla (seed).</p>
 
 <dl class="py function">
 <dt id="ant_colony.utils.plot_nodes_map">
-<code class="sig-prename descclassname">ant_colony.utils.</code><code class="sig-name descname">plot_nodes_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ant_colony/utils.html#plot_nodes_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ant_colony.utils.plot_nodes_map" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ant_colony.utils.</code><code class="sig-name descname">plot_nodes_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">save</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">save_as</span><span class="o">=</span><span class="default_value">'path'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ant_colony/utils.html#plot_nodes_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ant_colony.utils.plot_nodes_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Genera gŕafico con nodos numerados.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>df</strong> (<em>df</em>) – df con coordenadas de cada nodo. Debe incluir cols ‘lat’ y ‘lon’.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>df</em>) – df con coordenadas de cada nodo. Debe incluir cols ‘lat’ y ‘lon’.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Indica si guardar el mapa como html. Default es False.</p></li>
+<li><p><strong>save_as</strong> (<em>str</em><em>, </em><em>optional</em>) – Nombre del mapa a guardar como html.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Mapa con los nodos de cada ubicación.</p>
@@ -741,7 +745,7 @@ de forma deterministica con una semilla (seed).</p>
 
 <dl class="py function">
 <dt id="ant_colony.utils.plot_rout_map">
-<code class="sig-prename descclassname">ant_colony.utils.</code><code class="sig-name descname">plot_rout_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">route</span></em>, <em class="sig-param"><span class="n">path_type</span><span class="o">=</span><span class="default_value">'ants'</span></em>, <em class="sig-param"><span class="n">nodes</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ant_colony/utils.html#plot_rout_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ant_colony.utils.plot_rout_map" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ant_colony.utils.</code><code class="sig-name descname">plot_rout_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">route</span></em>, <em class="sig-param"><span class="n">path_type</span><span class="o">=</span><span class="default_value">'ants'</span></em>, <em class="sig-param"><span class="n">nodes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">save</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">save_as</span><span class="o">=</span><span class="default_value">'path'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ant_colony/utils.html#plot_rout_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ant_colony.utils.plot_rout_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Genera gŕafico con ruta entre nodos, y nodos numerados.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -751,6 +755,8 @@ de forma deterministica con una semilla (seed).</p>
 <li><p><strong>only_nodes</strong> (<em>str</em><em>, </em><em>optional</em>) – Indica si solo se quieren graficar los nodos. Default es True.</p></li>
 <li><p><strong>path_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Tipo de línea para la trayectoria. Opciones son ‘plain’ y ‘ants’. Default es ‘ants’.</p></li>
 <li><p><strong>nodes</strong> (<em>bool</em><em>, </em><em>optional</em>) – Indica si graficar los nodos. Default es True.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Indica si guardar el mapa como html. Default es False.</p></li>
+<li><p><strong>save_as</strong> (<em>str</em><em>, </em><em>optional</em>) – Nombre del mapa a guardar como html.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

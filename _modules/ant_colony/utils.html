@@ -169,11 +169,13 @@
 <span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance_matrix</span>
 
 <span class="c1">###</span>
-<div class="viewcode-block" id="plot_nodes_map"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.plot_nodes_map">[docs]</a><span class="k">def</span> <span class="nf">plot_nodes_map</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_nodes_map"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.plot_nodes_map">[docs]</a><span class="k">def</span> <span class="nf">plot_nodes_map</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save_as</span><span class="o">=</span><span class="s1">&#39;path&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Genera gŕafico con nodos numerados.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        df (df): df con coordenadas de cada nodo. Debe incluir cols &#39;lat&#39; y &#39;lon&#39;.</span>
+<span class="sd">        save (bool, optional): Indica si guardar el mapa como html. Default es False.</span>
+<span class="sd">        save_as (str, optional): Nombre del mapa a guardar como html.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        [folium map]: Mapa con los nodos de cada ubicación.</span>
@@ -195,10 +197,13 @@
                                     <span class="n">border_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                                     <span class="n">text_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
                                     <span class="n">inner_icon_style</span><span class="o">=</span><span class="s1">&#39;margin-top:0px;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_cities</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="n">name_map</span> <span class="o">=</span> <span class="n">save_as</span> <span class="o">+</span> <span class="s1">&#39;.html&#39;</span>
+        <span class="n">map_cities</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">name_map</span><span class="p">)</span>
         
     <span class="k">return</span> <span class="n">map_cities</span>   </div>
 
-<div class="viewcode-block" id="plot_rout_map"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.plot_rout_map">[docs]</a><span class="k">def</span> <span class="nf">plot_rout_map</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">path_type</span><span class="o">=</span><span class="s1">&#39;ants&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_rout_map"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.plot_rout_map">[docs]</a><span class="k">def</span> <span class="nf">plot_rout_map</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">path_type</span><span class="o">=</span><span class="s1">&#39;ants&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save_as</span><span class="o">=</span><span class="s1">&#39;path&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Genera gŕafico con ruta entre nodos, y nodos numerados. </span>
 
 <span class="sd">    Args:</span>
@@ -207,6 +212,8 @@
 <span class="sd">        only_nodes (str, optional): Indica si solo se quieren graficar los nodos. Default es True.</span>
 <span class="sd">        path_type (str, optional): Tipo de línea para la trayectoria. Opciones son &#39;plain&#39; y &#39;ants&#39;. Default es &#39;ants&#39;.</span>
 <span class="sd">        nodes (bool, optional): Indica si graficar los nodos. Default es True.</span>
+<span class="sd">        save (bool, optional): Indica si guardar el mapa como html. Default es False.</span>
+<span class="sd">        save_as (str, optional): Nombre del mapa a guardar como html.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        [folium map]: Mapa con los nodos conectados por la ruta provista.</span>
@@ -246,6 +253,10 @@
     <span class="k">elif</span> <span class="n">path_type</span><span class="o">==</span><span class="s1">&#39;plain&#39;</span><span class="p">:</span>
         <span class="n">folium</span><span class="o">.</span><span class="n">PolyLine</span><span class="p">(</span><span class="n">route</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_cities</span><span class="p">)</span>
 
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="n">name_map</span> <span class="o">=</span> <span class="n">save_as</span> <span class="o">+</span> <span class="s1">&#39;.html&#39;</span>
+        <span class="n">map_cities</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">name_map</span><span class="p">)</span>
+        
     <span class="k">return</span> <span class="n">map_cities</span></div>
 
 
