@@ -169,12 +169,13 @@
 <span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance_matrix</span>
 
 <span class="c1">###</span>
-<div class="viewcode-block" id="plot_rout_map"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.plot_rout_map">[docs]</a><span class="k">def</span> <span class="nf">plot_rout_map</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">path_type</span><span class="o">=</span><span class="s1">&#39;ants&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="plot_rout_map"><a class="viewcode-back" href="../../ant_colony.html#ant_colony.utils.plot_rout_map">[docs]</a><span class="k">def</span> <span class="nf">plot_rout_map</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">only_nodes</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">,</span> <span class="n">path_type</span><span class="o">=</span><span class="s1">&#39;ants&#39;</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;genera </span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        df (df): df con coordenadas de cada nodo. Debe incluir cols &#39;lat&#39; y &#39;lon&#39;.</span>
 <span class="sd">        route (lst): Ruta con identificador de los nodos a graficar en el mapa.</span>
+<span class="sd">        only_nodes (str, optional): Indica si solo se quieren graficar los nodos. Default es True.</span>
 <span class="sd">        path_type (str, optional): Tipo de línea para la trayectoria. Opciones son &#39;plain&#39; y &#39;ants&#39;. Default es &#39;ants&#39;.</span>
 <span class="sd">        nodes (bool, optional): Indica si graficar los nodos. Default es True.</span>
 
@@ -210,6 +211,9 @@
                                 <span class="n">text_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
                                 <span class="n">inner_icon_style</span><span class="o">=</span><span class="s1">&#39;margin-top:0px;&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_cities</span><span class="p">)</span>
     
+    <span class="k">if</span> <span class="n">only_nodes</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">map_cities</span>
+
     <span class="c1"># add route</span>
     <span class="k">if</span> <span class="n">path_type</span><span class="o">==</span><span class="s1">&#39;ants&#39;</span><span class="p">:</span>
         <span class="n">plugins</span><span class="o">.</span><span class="n">AntPath</span><span class="p">(</span><span class="n">route_coord</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_cities</span><span class="p">)</span>
